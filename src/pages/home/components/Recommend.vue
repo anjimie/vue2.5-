@@ -7,7 +7,7 @@
           猜你喜欢</div>
       <ul>
           <!-- border-bottom1像素边框 -->
-          <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+          <li class="item border-bottom" v-for="item of list" :key="item.id">
               <div class="item-img-wrapper">
                   <img class="item-img" :src="item.imgUrl" alt="">
               </div>
@@ -24,31 +24,34 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data() {
-      return {
-          recommendList:[{
-          id:'001',
-          imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title:'北京欢乐谷',
-          desc:'亚洲唯一飞行式过山车等你来挑战'
-      },{
-          id:'002',
-          imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title:'北京欢乐谷',
-          desc:'亚洲唯一飞行式过山车等你来挑战'
-      },{
-          id:'003',
-          imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title:'北京欢乐谷',
-          desc:'亚洲唯一飞行式过山车等你来挑战'
-      },{
-          id:'004',
-          imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
-          title:'北京欢乐谷',
-          desc:'亚洲唯一飞行式过山车等你来挑战'
-      }]
-      }
+  props:{
+      list:Array
   }
+//   data() {
+//       return {
+//           recommendList:[{
+//           id:'001',
+//           imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
+//           title:'北京欢乐谷',
+//           desc:'亚洲唯一飞行式过山车等你来挑战'
+//       },{
+//           id:'002',
+//           imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
+//           title:'北京欢乐谷',
+//           desc:'亚洲唯一飞行式过山车等你来挑战'
+//       },{
+//           id:'003',
+//           imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
+//           title:'北京欢乐谷',
+//           desc:'亚洲唯一飞行式过山车等你来挑战'
+//       },{
+//           id:'004',
+//           imgUrl:'http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg',
+//           title:'北京欢乐谷',
+//           desc:'亚洲唯一飞行式过山车等你来挑战'
+//       }]
+//       }
+//   }
 
 }
 </script>
