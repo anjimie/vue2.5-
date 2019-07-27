@@ -9,20 +9,17 @@
       </div>
       <router-link to="/city">
         <div class="header-right">
-            {{this.doubleCity}}
+            {{this.$store.state.city}}
             <span class="iconfont arrow-icon">&#xe64a;</span>
         </div>
       </router-link>
   </div>
 </template>
 <script>
-// mapState,mapGetters 的理解参考Home.vue页面，Header_state.vue页面是复制的Header.vue页面，里面是不用展开符的写法
-import { mapState,mapGetters } from 'vuex'
 export default {
   name: 'HomeHeader',
-  computed: {
-    ...mapState(['city']),
-    ...mapGetters(['doubleCity'])
+  props: {
+    city: String
   }
 }
 </script>
