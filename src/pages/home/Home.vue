@@ -1,9 +1,8 @@
 <template>
   <div>
-    <!-- 父组件给子组件传值，属性的形式 -->
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :list="swiperList"></home-swiper>
-    <home-icons  :list="iconList"></home-icons>
+    <home-icons :list="iconList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
     <home-weekend :list="weekendList"></home-weekend>
   </div>
@@ -15,8 +14,8 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
-// 传数据需要先引入axios
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -26,38 +25,43 @@ export default {
     HomeRecommend,
     HomeWeekend
   },
-  // 数据
-  data(){
+  data () {
     return {
-      city :'',
-      swiperList:[],
-      iconList:[],
-      recommendList:[],
-      weekendList:[]
+      lastCity: '',
+      swiperList: [],
+      iconList: [],
+      recommendList: [],
+      weekendList: []
     }
   },
-  // 方法内获取
-  methods:{
-    getHomeInfo(){
-      axios.get('/api/index.json')
+  computed: {
+    ...mapState(['city'])
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeInfoSucc)
     },
-    getHomeInfoSucc(res){
+    getHomeInfoSucc (res) {
       res = res.data
-      if(res.ret && res.data){
-        const data = res.data 
-        this.city = data.city
+      if (res.ret && res.data) {
+        const data = res.data
         this.swiperList = data.swiperList
         this.iconList = data.iconList
         this.recommendList = data.recommendList
         this.weekendList = data.weekendList
       }
-      // console.log(res)
-    },
+    }
   },
-  // 生命周期函数传ajax数据
-  mounted() {
+  mounted () {
+    this.lastCity = this.city
     this.getHomeInfo()
+  },
+  activated () {
+    if (this.lastCity !== this.city) {
+      this.lastCity = this.city
+      this.getHomeInfo()
+    }
   }
 }
 </script>
