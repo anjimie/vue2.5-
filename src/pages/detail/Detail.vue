@@ -8,8 +8,8 @@
     <detail-header :list="list"></detail-header>
     
     <div class='content'>
-      <detail-list></detail-list>
-       此处景点详情内容不再赘述，开发用到的知识点之前都已经写过。
+      <detail-list :list="list"></detail-list>
+       <!-- 此处景点详情内容不再赘述，开发用到的知识点之前都已经写过。 -->
     </div>
     
   </div>

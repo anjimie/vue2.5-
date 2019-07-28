@@ -14,3 +14,5 @@ export default {
   name: 'App'
 }
 </script>
+// 10.11.164.70
+// 真机测试兼容性问题：npm install babel-polyfill --save

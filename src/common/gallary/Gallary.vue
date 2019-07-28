@@ -60,6 +60,6 @@ export default {
       .gallary-img
         width 100%
       .swiper-pagination
-        color red
+        color white
         bottom -1rem
 </style>
