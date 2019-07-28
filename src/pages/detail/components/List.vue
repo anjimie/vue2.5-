@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>a</div>
     <div
       class="item"
       v-for="(item, index) of list"
@@ -9,6 +10,7 @@
         <span class="item-title-icon"></span>
         {{item.title}}
       </div>
+      <!-- 递归，二级列表   -->
       <div v-if="item.children" class="item-chilren">
         <detail-list :list="item.children"></detail-list>
       </div>

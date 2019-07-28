@@ -1,21 +1,39 @@
 <template>
   <div>
-    <detail-banner></detail-banner>
-    <detail-header></detail-header>
+    <detail-banner 
+    :sightName="sightName"
+    :bannerImg="bannerImg"
+    :bannerImgs="gallaryImgs"
+    ></detail-banner>
+    <detail-header :list="list"></detail-header>
+    
     <div class='content'>
+      <detail-list></detail-list>
        此处景点详情内容不再赘述，开发用到的知识点之前都已经写过。
     </div>
+    
   </div>
 </template>
 <script>
 import axios from 'axios'
 import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
+import DetailList from './components/List'
 export default {
   name: 'Detail',
   components: {
     DetailBanner,
-    DetailHeader
+    DetailHeader,
+    DetailList
+  },
+  data(){
+    return {
+      sightName:'',
+      bannerImg:'',
+      gallaryImgs:[],
+      list:[]
+    }
+
   },
   methods: {
     getDetailInfo () {
@@ -29,7 +47,15 @@ export default {
       }).then(this.handleGetDataSucc)
     },
     handleGetDataSucc(res){
-      console.log(res); 
+      res = res.data
+      if(res.ret && res.data){
+        const data = res.data
+        this.sightName = data.sightName
+        this.bannerImg=data.bannerImg
+        this.gallaryImgs =data.gallaryImgs
+        this.list = data.categoryList
+      }
+      // console.log(res); 
     }
   },
   mounted () {

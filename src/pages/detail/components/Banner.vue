@@ -1,24 +1,42 @@
 <template>
   <div>
+    <!-- http://img1.qunarzz.com/sight/p0/1501/d0/d00d72664c3e73d8.water.jpg_600x330_20d81a68.jpg -->
     <div class="banner" @click="handleBannerClick">
-        <img class='banner-img' src="http://img1.qunarzz.com/sight/p0/1501/d0/d00d72664c3e73d8.water.jpg_600x330_20d81a68.jpg" alt="">
-        <div class="banner-info">
-            <div class="banner-title">北京天文馆(AAA景区)</div>
-            <div class="banner-number"><span class="iconfont arrow-icon banner-icon">&#xe605;</span>39</div>
+      <img class="banner-img" :src="bannerImg" />
+      <div class="banner-info">
+        <div class="banner-tittle">
+          {{this.sightName}}
         </div>
+        <div class="banner-number">
+          <span class="iconfont banner-icon">&#xe692;</span>
+          {{this.bannerImgs.length}}
+        </div>
+      </div>
     </div>
-    <common-gallary :imgs='imgs' v-show="gallaryClose" @close='handleGallaryClose'></common-gallary>
+    <fade-animation>
+      <common-gallary
+        :imgs="bannerImgs"
+        v-show="showGallary"
+        @close="handleGallaryClose"
+      ></common-gallary>
+    </fade-animation>
   </div>
 </template>
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
   name: 'DetailBanner',
+  props:{
+    sightName:String,
+    bannerImg:String,
+    bannerImgs:[]
+  },
   data(){
     return {
-      //这里应该是请求过来的图片，但是之前讲过请求数据的方法了，这里暂时就先用静态的数组代替
-      imgs:['http://img1.qunarzz.com/sight/p0/1501/d0/d00d72664c3e73d8.water.jpg_600x330_20d81a68.jpg',
-        'http://img1.qunarzz.com/sight/p0/201403/07/dca171d32e20adbf141e7f8f91b71c0e.jpg_r_800x800_f7e086d4.jpg'],
+      // //这里应该是请求过来的图片，但是之前讲过请求数据的方法了，这里暂时就先用静态的数组代替
+      // imgs:['http://img1.qunarzz.com/sight/p0/1501/d0/d00d72664c3e73d8.water.jpg_600x330_20d81a68.jpg',
+      //   'http://img1.qunarzz.com/sight/p0/201403/07/dca171d32e20adbf141e7f8f91b71c0e.jpg_r_800x800_f7e086d4.jpg'],
       gallaryClose: false 
     }
   },
