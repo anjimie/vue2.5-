@@ -9,7 +9,8 @@
 </template>
 <script>
 // 引入各个组件 
-import HomeHeader from './components/Header'
+// import HomeHeader from './components/Header'
+import HomeHeader from './components/Header_state'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
@@ -28,6 +29,7 @@ export default {
     HomeIcons,
     HomeRecommend,
     HomeWeekend
+    
   },
   data () {
     return {
